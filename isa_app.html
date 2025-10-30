@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Aplicación Isa 💖</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+      background-color: #f9f9f9;
+    }
+    input, button {
+      padding: 10px;
+      margin: 10px;
+      font-size: 16px;
+    }
+    #opciones {
+      margin-top: 20px;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Hola, ¿cómo te llamas?</h1>
+  <input type="text" id="nombre" placeholder="Escribe tu nombre">
+  <br>
+  <button onclick="verificarNombre()">Ingresar</button>
+
+  <div id="mensaje"></div>
+
+  <div id="opciones" class="hidden">
+    <h2>¿A qué apartado quieres ingresar?</h2>
+    <button onclick="abrir('https://drive.google.com/drive/folders/1l-uvqSkr9CHZXPpMBzEjH3IBNbT0c2-8?usp=drive_link')">Carpeta Drive</button>
+    <button onclick="abrir('https://scholar.google.com')">Google Scholar</button>
+    <button onclick="abrir('https://kahoot.it/solo/?quizId=3f436ddc-114b-4d71-9676-3a0f1e7bf987&gameMode=flashcards')">Juegos</button>
+  </div>
+
+  <script>
+    function verificarNombre() {
+      const nombre = document.getElementById("nombre").value.trim();
+      const mensaje = document.getElementById("mensaje");
+      const opciones = document.getElementById("opciones");
+
+      if (nombre === "") {
+        mensaje.innerHTML = "Por favor, escribe tu nombre.";
+        opciones.classList.add("hidden");
+        return;
+      }
+
+      if (nombre === "Isabella") {
+        mensaje.innerHTML = "Te amo Isa 💖";
+        opciones.classList.remove("hidden");
+      } else {
+        mensaje.innerHTML = `Lo siento ${nombre}, ese apartado no está en mi base de datos.`;
+        opciones.classList.add("hidden");
+      }
+    }
+
+    function abrir(url) {
+      window.open(url, "_blank");
+    }
+  </script>
+
+</body>
+</html>
